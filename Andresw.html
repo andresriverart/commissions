@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio / Comisiones – Tu Nombre</title>
+  <meta name="description" content="Plantilla tipo Carrd: una sola página, secciones con anclas, carruseles e información de comisiones.">
+  <style>
+    :root{
+      --bg:#0f1115;          /* Fondo principal */
+      --card:#171923;        /* Tarjetas */
+      --muted:#8a94a6;       /* Texto secundario */
+      --fg:#e6eaf2;          /* Texto principal */
+      --acc:#7c5cff;         /* Acento */
+      --acc-2:#36d399;       /* Acento secundario */
+      --danger:#ff6b6b;      /* Avisos */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --radius-lg: 22px;
+      --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 600px at 10% -10%, rgba(124,92,255,.25), transparent),
+                     radial-gradient(800px 500px at 90% -20%, rgba(54,211,153,.15), transparent),
+                     var(--bg);
+         color:var(--fg);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(15,17,21,.65);backdrop-filter: blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc-2));box-shadow:0 0 12px rgba(124,92,255,.9)}
+    .links{display:flex;gap:18px;align-items:center}
+    .links a{opacity:.85}
+    .links a:hover,.links a.active{opacity:1;color:var(--acc)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--acc),#5d48ff);color:white;font-weight:600;box-shadow:var(--shadow)}
+    .btn.outline{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--fg)}
+    /* Sections */
+    section{padding:72px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    h1,h2,h3{line-height:1.2;margin:0 0 12px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:22px}
+    @media(min-width:900px){
+      .grid.cols-2{grid-template-columns: 1fr 1fr}
+      .grid.cols-3{grid-template-columns: repeat(3,1fr)}
+    }
+    /* Hero */
+    .hero{display:grid;gap:18px;text-align:center}
+    .hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .status{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+    .badge-dot{width:8px;height:8px;border-radius:50%;background:var(--acc-2);box-shadow:0 0 8px rgba(54,211,153,.9)}
+    .badge-dot.closed{background:var(--danger);box-shadow:0 0 8px rgba(255,107,107,.9)}
+    /* Tables */
+    table{width:100%;border-collapse:collapse;border-spacing:0}
+    th,td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06);text-align:left}
+    th{color:#cfd6e6;font-weight:700}
+    tr:hover td{background:rgba(255,255,255,.02)}
+    .table-wrap{overflow:auto}
+    /* Carousel */
+    .carousel{position:relative;overflow:hidden;border-radius:var(--radius-lg);background:#0b0d11;border:1px solid rgba(255,255,255,.08)}
+    .slides{display:flex;transition:transform .5s ease}
+    .slide{min-width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:#0b0d11}
+    .slide img{width:100%;height:100%;object-fit:cover}
+    .ctrl{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 6px}
+    .ctrl button{border:none;background:rgba(255,255,255,.1);backdrop-filter: blur(4px);color:white;width:40px;height:40px;border-radius:999px;cursor:pointer}
+    .dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:8px}
+    .dots button{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.35);cursor:pointer}
+    .dots button.active{background:white}
+    /* Accordion */
+    .accordion .item{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden}
+    .accordion summary{cursor:pointer;list-style:none;padding:16px 18px;background:rgba(255,255,255,.04);font-weight:600}
+    .accordion details[open] summary{background:rgba(255,255,255,.06)}
+    .accordion .panel{padding:16px 18px}
+    /* Footer */
+    footer{padding:48px 0;border-top:1px solid rgba(255,255,255,.06);color:var(--muted)}
+    /* Utilities */
+    .center{display:grid;place-items:center}
+    .mb8{margin-bottom:8px}.mb16{margin-bottom:16px}.mb24{margin-bottom:24px}.mb32{margin-bottom:32px}
+    .pill{padding:2px 8px;border:1px solid rgba(255,255,255,.12);border-radius:999px;color:#c9d3e6;font-size:12px}
+    .sr{position:absolute;left:-10000px}
+    /* Mobile menu */
+    .mobile-toggle{display:none}
+    @media(max-width:800px){
+      .links{display:none}
+      .mobile-toggle{display:inline-flex}
+      .mobile-menu{position:fixed;inset:64px 10px auto 10px;background:rgba(15,17,21,.95);backdrop-filter: blur(8px);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px;display:none;flex-direction:column;gap:10px}
+      .mobile-menu a{padding:12px;border-radius:10px;background:rgba(255,255,255,.03)}
+      .mobile-menu.show{display:flex}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> <span>Tu Nombre</span></div>
+      <nav class="links" aria-label="Navegación principal">
+        <a href="#inicio" class="active">Inicio</a>
+        <a href="#comisiones">Comisiones</a>
+        <a href="#tradicional">Arte tradicional</a>
+        <a href="#digital">Arte digital</a>
+        <a href="#tos">Términos</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="mobile-toggle btn outline" aria-expanded="false" aria-controls="menu-m">Menú</button>
+    </div>
+    <div id="menu-m" class="mobile-menu wrap" role="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#comisiones">Comisiones</a>
+      <a href="#tradicional">Arte tradicional</a>
+      <a href="#digital">Arte digital</a>
+      <a href="#tos">Términos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </header>
+
+  <!-- Hero / Inicio -->
+  <section id="inicio" class="wrap hero">
+    <div class="status" id="statusBadge">
+      <span class="badge-dot" aria-hidden="true"></span>
+      <span>Comisiones: <strong>ABIERTAS</strong></span>
+    </div>
+    <h1>¡Hola! Soy <span style="color:var(--acc)">Tu Nombre</span></h1>
+    <p class="muted">Portafolio y comisiones en una sola página. Personaliza esta plantilla con tus imágenes, precios y enlaces. Todo es editable.</p>
+    <div class="actions">
+      <a class="btn" href="#contacto">Solicitar comisión</a>
+      <a class="btn outline" href="#comisiones">Ver precios</a>
+    </div>
+  </section>
+
+  <!-- Comisiones / resumen -->
+  <section id="comisiones">
+    <div class="wrap grid cols-2">
+      <div class="card" style="padding:22px">
+        <h2 class="mb8">Estado y contacto</h2>
+        <p class="muted mb16">Todas las tarifas están en <strong>USD</strong> y son <em>bases</em>. El precio final puede variar por complejidad, fondos y extras.</p>
+        <div class="grid" style="grid-template-columns:repeat(2,1fr);gap:12px">
+          <a class="btn center" href="#contacto">Formulario</a>
+          <a class="btn outline center" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn outline center" href="mailto:tucorreo@dominio.com">Email</a>
+          <a class="btn outline center" href="https://x.com/" target="_blank" rel="noopener">X / Twitter</a>
+        </div>
+      </div>
+      <div class="card" style="padding:22px">
+        <h2 class="mb8">Qué ofrezco</h2>
+        <ul class="muted" style="line-height:1.8;margin:0;padding-left:18px">
+          <li>Retratos, medio cuerpo, cuerpo completo</li>
+          <li>Ilustraciones con fondo simple o complejo</li>
+          <li>Arte tradicional (acuarela, glass painting, marcadores)</li>
+          <li>Formato final: PNG 300 DPI (impresión / digital)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tradicional -->
+  <section id="tradicional">
+    <div class="wrap">
+      <h2 class="mb8">Arte tradicional</h2>
+      <p class="muted mb24">Ejemplos y lista de precios base. Sustituye las imágenes y los tamaños según tu catálogo.</p>
+
+      <div class="table-wrap card mb24">
+        <table>
+          <thead>
+            <tr><th>Estilo</th><th>Tamaño</th><th>USD</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Glass painting (grande)</td><td>20×25 cm</td><td>20+</td></tr>
+            <tr><td>Glass painting (mediano)</td><td>12×18 cm</td><td>20+</td></tr>
+            <tr><td>Bookmark</td><td>20×5 cm</td><td>20+</td></tr>
+            <tr><td>Acuarela</td><td>A4</td><td>25+</td></tr>
+            <tr><td>Acuarela postal</td><td>10×15 cm</td><td>15+</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Carrusel tradicional -->
+      <div class="carousel mb16" data-carousel>
+        <div class="slides">
+          <div class="slide"><img src="https://picsum.photos/seed/trad1/1200/700" alt="Ejemplo de arte tradicional 1"></div>
+          <div class="slide"><img src="https://picsum.photos/seed/trad2/1200/700" alt="Ejemplo de arte tradicional 2"></div>
+          <div class="slide"><img src="https://picsum.photos/seed/trad3/1200/700" alt="Ejemplo de arte tradicional 3"></div>
+          <div class="slide"><img src="https://picsum.photos/seed/trad4/1200/700" alt="Ejemplo de arte tradicional 4"></div>
+          <div class="slide"><img src="https://picsum.photos/seed/trad5/1200/700" alt="Ejemplo de arte tradicional 5"></div>
+        </div>
+        <div class="ctrl">
+          <button data-prev aria-label="Anterior">◀</button>
+          <button data-next aria-label="Siguiente">▶</button>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+      <p class="muted">Tip: reemplaza los <code>src</code> por tus imágenes. El carrusel funciona automáticamente con cualquier número de diapositivas.</p>
+    </div>
+  </section>
+
+  <!-- Digital -->
+  <section id="digital">
+    <div class="wrap">
+      <h2 class="mb8">Arte digital</h2>
+      <p class="muted mb24">Precios base según el tipo de acabado. Puedes editar nombres y valores libremente.</p>
+      <div class="table-wrap card mb24">
+        <table>
+          <thead>
+            <tr><th>Tipo</th><th>Flat Color</th><th>Full Render</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Retrato</td><td>$25+</td><td>$50+</td></tr>
+            <tr><td>Medio cuerpo</td><td>$35+</td><td>$70+</td></tr>
+            <tr><td>Cuerpo completo</td><td>$50+</td><td>$100+</td></tr>
+            <tr><td>Ilustración + fondo simple</td><td>$100+</td><td>$150+</td></tr>
+            <tr><td>Ilustración + fondo completo</td><td>$150+</td><td>$200+</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Carrusel digital -->
+      <div class="carousel mb16" data-carousel>
+        <div class="slides">
+          <div class="slide"><img src="https://picsum.photos/seed/dig1/1200/700" alt="Ilustración digital 1"></div>
+          <div class="slide"><img src="https://picsum.photos/seed/dig2/1200/700" alt="Ilustración digital 2"></div>
+          <div class="slide"><img src="https://picsum.photos/seed/dig3/1200/700" alt="Ilustración digital 3"></div>
+          <div class="slide"><img src="https://picsum.photos/seed/dig4/1200/700" alt="Ilustración digital 4"></div>
+        </div>
+        <div class="ctrl">
+          <button data-prev aria-label="Anterior">◀</button>
+          <button data-next aria-label="Siguiente">▶</button>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Términos -->
+  <section id="tos">
+    <div class="wrap grid cols-2">
+      <div class="card" style="padding:22px">
+        <h2 class="mb16">Contacto y pago</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th>Formulario</th><td>Envíame tu idea con referencias y presupuesto.</td></tr>
+              <tr><th>Alternativas</th><td>Discord/Email. Respuesta en 24–72 h.</td></tr>
+              <tr><th>Pago</th><td>PayPal (factura). Transferencia local (Colombia) opcional.</td></tr>
+              <tr><th>Cola</th><td>Por orden de llegada. Inicio tras el anticipo.</td></tr>
+              <tr><th>Entrega</th><td>PNG 300 DPI por email o enlace de descarga.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="padding:22px">
+        <h2 class="mb16">Términos generales</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th>Anticipo</th><td>50% al iniciar. Entrega final tras pago completo.</td></tr>
+              <tr><th>Reembolsos</th><td>No aplica si el trabajo ya comenzó.</td></tr>
+              <tr><th>Uso</th><td>Personal. Uso comercial requiere licencia extra.</td></tr>
+              <tr><th>Revisiones</th><td>Permitidas en boceto / lineart / base. Cambios tardíos generan cargo.</td></tr>
+              <tr><th>Tiempo</th><td>1–4 semanas según complejidad. Urgencia con recargo.</td></tr>
+              <tr><th>Privacidad</th><td>Puedes solicitar no publicar tu comisión (cargo opcional).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <h2 class="mb16">Preguntas frecuentes</h2>
+      <div class="accordion grid">
+        <details class="item">
+          <summary>¿Qué programas y tableta usas?</summary>
+          <div class="panel muted">Ej.: Photoshop / Clip Studio Paint con Wacom Intuos S.</div>
+        </details>
+        <details class="item">
+          <summary>¿Puedo usar tu arte como icono/encabezado?</summary>
+          <div class="panel muted">Sí, con crédito visible en tu bio.</div>
+        </details>
+        <details class="item">
+          <summary>¿Aceptas NSFW / diseño gráfico / concept art?</summary>
+          <div class="panel muted">Sin NSFW. Sí a diseño y concept art (consultar tarifas).</div>
+        </details>
+        <details class="item">
+          <summary>¿Cuándo abres comisiones?</summary>
+          <div class="panel muted">Mientras haya cupos. Revisa el estado en el encabezado.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <div class="wrap">
+      <h2 class="mb8">Contacto</h2>
+      <p class="muted mb16">Cambia este bloque por tu formulario (Google Forms, Typeform, Jotform) o deja tus redes.</p>
+      <div class="grid cols-3">
+        <a class="card center" style="padding:22px" href="mailto:tucorreo@dominio.com"><strong>Email</strong><span class="pill" style="margin-top:8px">tucorreo@dominio.com</span></a>
+        <a class="card center" style="padding:22px" href="https://www.instagram.com/" target="_blank" rel="noopener"><strong>Instagram</strong><span class="pill" style="margin-top:8px">@tuusuario</span></a>
+        <a class="card center" style="padding:22px" href="https://discord.com/users/" target="_blank" rel="noopener"><strong>Discord</strong><span class="pill" style="margin-top:8px">usuario#0000</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Tu Nombre. Todos los derechos reservados.</div>
+      <div style="display:flex;gap:14px">
+        <a href="#comisiones">Comisiones</a>
+        <a href="#tos">T.O.S</a>
+        <a href="#faq">FAQ</a>
+        <a href="#inicio">Inicio</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- Utilidades ---
+    const $$ = (sel,ctx=document)=>Array.from(ctx.querySelectorAll(sel));
+
+    // Resaltar link activo según scroll
+    const sections = $$("section");
+    const navLinks = $$(".links a");
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const id = e.target.id;
+          navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        }
+      })
+    },{root:null,threshold:.5});
+    sections.forEach(s=>obs.observe(s));
+
+    // Menú móvil
+    const toggle = document.querySelector('.mobile-toggle');
+    const menu = document.getElementById('menu-m');
+    toggle.addEventListener('click',()=>{
+      menu.classList.toggle('show');
+      toggle.setAttribute('aria-expanded', menu.classList.contains('show'));
+    });
+    menu.addEventListener('click', e=>{ if(e.target.tagName==='A') menu.classList.remove('show'); });
+
+    // Estado de comisiones (cambia a 'CERRADAS' si quieres)
+    const statusOpen = true; // ← edita a false para cerrar
+    const badge = document.getElementById('statusBadge');
+    if(!statusOpen){
+      badge.querySelector('strong').textContent = 'CERRADAS';
+      badge.querySelector('.badge-dot').classList.add('closed');
+    }
+
+    // Carruseles reutilizables
+    $$("[data-carousel]").forEach(carousel=>{
+      const slides = carousel.querySelector('.slides');
+      const items = $$('.slide', slides);
+      let i = 0;
+      const dotsWrap = carousel.querySelector('.dots');
+      items.forEach((_,idx)=>{
+        const b = document.createElement('button');
+        b.addEventListener('click',()=>go(idx));
+        dotsWrap.appendChild(b);
+      });
+      const dots = $$('.dots button', carousel);
+      const go = idx=>{ i = (idx + items.length) % items.length; slides.style.transform = `translateX(-${i*100}%)`; dots.forEach((d,j)=>d.classList.toggle('active', j===i)); }
+      carousel.querySelector('[data-prev]').addEventListener('click',()=>go(i-1));
+      carousel.querySelector('[data-next]').addEventListener('click',()=>go(i+1));
+      go(0);
+    });
+
+    // Año dinámico footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
