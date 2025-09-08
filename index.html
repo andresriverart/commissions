@@ -375,5 +375,11 @@
     // Año dinámico footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+    // Quitar el hash después de navegar
+window.addEventListener("hashchange", function () {
+  history.replaceState("", document.title, window.location.pathname + window.location.search);
+});
+</script>
 </body>
 </html>
