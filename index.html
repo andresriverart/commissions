@@ -3,306 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio - AndresW</title>
+  <title>AndresW - Portafolio</title>
   <style>
-    /* ---------- ESTILOS GENERALES ---------- */
-    body {
+    :root {
+      --color-principal: #2f4035;
+      --color-fondo: #ffffff;
+      --color-texto: #333333;
+      --color-claro: #f5f5f5;
+    }
+
+    * {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #222;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
       line-height: 1.6;
     }
 
-    h1, h2, h3 {
-      color: #2E4139;
-      margin-bottom: 0.5em;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    /* ---------- HEADER / NAV ---------- */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      border-bottom: 1px solid #ddd;
+      background: var(--color-fondo);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 40px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
       z-index: 1000;
     }
 
     header h1 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #2E4139;
+      font-size: 1.2rem;
+      color: var(--color-principal);
     }
 
     nav a {
-      margin-left: 20px;
-      font-weight: 500;
-      color: #2E4139;
+      margin-left: 1rem;
+      text-decoration: none;
+      color: var(--color-texto);
+      font-weight: bold;
       transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #000;
+      color: var(--color-principal);
     }
 
-    /* ---------- HERO / PORTADA ---------- */
     .hero {
-      background: url("https://via.placeholder.com/1600x600") center/cover no-repeat;
-      color: white;
       text-align: center;
-      padding: 160px 20px 120px;
-      margin-top: 70px;
-      position: relative;
+      padding: 5rem 2rem;
     }
 
     .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--color-principal);
     }
 
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+      margin-bottom: 2rem;
     }
 
-    .hero .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 12px 24px;
-      background: #2E4139;
-      color: white;
-      border-radius: 6px;
-      font-weight: 600;
+    .hero .buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--color-principal);
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
       transition: background 0.3s;
     }
 
-    .btn:hover {
-      background: #1f2c26;
+    .hero .buttons a:hover {
+      background: #1d2921;
     }
 
-    /* ---------- ESTADO DE COMISIONES ---------- */
-    .status {
-      background: rgba(255,255,255,0.9);
-      color: #2E4139;
-      font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 6px;
-      display: inline-block;
-      margin-bottom: 20px;
+    .section {
+      padding: 4rem 2rem;
+      text-align: center;
     }
 
-    /* ---------- PORTAFOLIO Y PRECIOS ---------- */
-    .prices {
+    .section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--color-principal);
+    }
+
+    .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .card {
-      border: 1px solid #ddd;
+      background: var(--color-claro);
+      padding: 1.5rem;
       border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      margin: 10px 0;
-    }
-
-    .carousel {
-      display: flex;
-      overflow-x: auto;
-      gap: 20px;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 10px;
-    }
-
-    .carousel img {
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
+    .card img {
+      max-width: 100%;
       border-radius: 10px;
-      scroll-snap-align: start;
+      margin-bottom: 1rem;
     }
 
-    /* ---------- CONTACTO + REDES ---------- */
-    .contact-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
+    .card h4 {
+      margin-bottom: 0.5rem;
+      color: var(--color-principal);
     }
 
-    .socials a {
-      display: inline-block;
-      margin-right: 15px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #2E4139;
-    }
-
-    .contact-img img {
-      width: 100%;
-      border-radius: 12px;
-      object-fit: cover;
-    }
-
-    /* ---------- FAQ ---------- */
-    details {
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    summary {
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* ---------- FOOTER ---------- */
     footer {
-      background: #f5f5f5;
       text-align: center;
-      padding: 40px 20px;
+      padding: 2rem;
+      background: var(--color-claro);
       color: #555;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      margin: 0 10px;
-      color: #2E4139;
-      font-weight: 600;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
-  <!-- ---------- HEADER ---------- -->
   <header>
     <h1>AndresW</h1>
     <nav>
-      <a href="#portfolio">Portafolio</a>
-      <a href="#contact">Contacto</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#contacto">Contacto</a>
       <a href="#faq">FAQ</a>
-      <a href="#terms">Términos</a>
+      <a href="#terminos">Términos</a>
     </nav>
   </header>
 
-  <!-- ---------- HERO ---------- -->
   <section class="hero">
-    <div class="status">Comisiones: <span id="com-status">Abiertas</span></div>
+    <p>Comisiones: Abiertas</p>
     <h2>Bienvenido a mi portafolio</h2>
-    <p>Arte digital y comisiones personalizadas</p>
     <div class="buttons">
-      <a href="#portfolio" class="btn">Ver Portafolio</a>
-      <a href="#contact" class="btn">Contacto</a>
+      <a href="#portafolio">Ver Portafolio</a>
+      <a href="#contacto">Contacto</a>
     </div>
   </section>
 
-  <!-- ---------- PORTAFOLIO Y PRECIOS ---------- -->
-  <section id="portfolio">
-    <h2>Portafolio y precios</h2>
-    <div class="prices">
+  <section id="portafolio" class="section">
+    <h3>Portafolio y precios</h3>
+    <div class="cards">
       <div class="card">
-        <h3>Boceto</h3>
+        <img src="https://via.placeholder.com/300x200?text=Ejemplo+1" alt="ejemplo1">
+        <h4>Boceto</h4>
         <p>$20</p>
       </div>
       <div class="card">
-        <h3>Color simple</h3>
+        <img src="https://via.placeholder.com/300x200?text=Ejemplo+2" alt="ejemplo2">
+        <h4>Color simple</h4>
         <p>$40</p>
       </div>
       <div class="card">
-        <h3>Render completo</h3>
+        <img src="https://via.placeholder.com/300x200?text=Ejemplo+3" alt="ejemplo3">
+        <h4>Render completo</h4>
         <p>$70</p>
       </div>
     </div>
-
-    <div class="carousel">
-      <img src="https://via.placeholder.com/300x200" alt="ejemplo1">
-      <img src="https://via.placeholder.com/300x200" alt="ejemplo2">
-      <img src="https://via.placeholder.com/300x200" alt="ejemplo3">
-    </div>
   </section>
 
-  <!-- ---------- CONTACTO + REDES ---------- -->
-  <section id="contact">
-    <h2>Contacto y redes</h2>
-    <div class="contact-container">
-      <div>
-        <p>Puedes encontrarme en:</p>
-        <div class="socials">
-          <a href="#">Instagram</a>
-          <a href="#">Discord</a>
-          <a href="#">Twitter</a>
-          <a href="#">Twitch</a>
-        </div>
-      </div>
-      <div class="contact-img">
-        <img src="https://via.placeholder.com/500x400" alt="Arte destacado">
-      </div>
-    </div>
+  <section id="contacto" class="section">
+    <h3>Contacto</h3>
+    <p>Si quieres una comisión, contáctame en:</p>
+    <p><strong>Email:</strong> ejemplo@correo.com</p>
+    <p><strong>Instagram:</strong> @andresw</p>
   </section>
 
-  <!-- ---------- FAQ ---------- -->
-  <section id="faq">
-    <h2>Preguntas frecuentes</h2>
-    <details>
-      <summary>¿Cómo encargar una comisión?</summary>
-      <p>Contáctame por redes sociales y revisa disponibilidad.</p>
-    </details>
-    <details>
-      <summary>¿Cuánto tiempo tarda una ilustración?</summary>
-      <p>Depende del detalle, entre 1 a 3 semanas.</p>
-    </details>
+  <section id="faq" class="section">
+    <h3>FAQ</h3>
+    <p><strong>¿Cuánto tardas en una comisión?</strong><br>Depende de la complejidad, entre 3 y 7 días.</p>
+    <p><strong>¿Aceptas pagos internacionales?</strong><br>Sí, vía PayPal.</p>
   </section>
 
-  <!-- ---------- TERMINOS ---------- -->
-  <section id="terms">
-    <h2>Términos y condiciones</h2>
-    <p>Asegúrate de leer mis condiciones antes de solicitar una comisión.</p>
+  <section id="terminos" class="section">
+    <h3>Términos y condiciones</h3>
+    <p>Los precios pueden variar según la complejidad. No se permiten reembolsos una vez comenzado el trabajo.</p>
   </section>
 
-  <!-- ---------- FOOTER ---------- -->
   <footer>
-    <p>© 2025 AndresW. Todos los derechos reservados.</p>
-    <a href="#portfolio">Portafolio</a> |
-    <a href="#contact">Contacto</a> |
-    <a href="#faq">FAQ</a>
+    <p>&copy; 2025 AndresW - Todos los derechos reservados</p>
   </footer>
-
-  <!-- ---------- SCRIPT ESTADO ---------- -->
-  <script>
-    // Cambiar estado de comisiones fácil desde aquí
-    const status = document.getElementById("com-status");
-    status.textContent = "Abiertas"; // Cambiar a "Cerradas"
-  </script>
 </body>
 </html>
+
